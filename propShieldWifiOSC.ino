@@ -1,9 +1,13 @@
 #include <OSCMessage.h>
 
 /*
-    Make an OSC message and send it over UDP
+    connects to a wifi network
+    reads pitch, yaw and roll from the teensy prop shield
+    sends as OSC messages /motion pitch yaw roll
     
-    Adrian Freed
+    Jesse Mejia
+    Parallel Studio
+    2017
  */
 #include <SPI.h>
 #include <WiFi101.h>
@@ -19,7 +23,7 @@ NXPSensorFusion filter;
 
 int status = WL_IDLE_STATUS;
 char ssid[] = "IMAGA"; //  your network SSID (name)
-char pass[] = "windsor1";    // your network password (use for WPA, or use as key for WEP)
+char pass[] = "*****";    // your network password (use for WPA, or use as key for WEP)
 
 //the Arduino's IP
 IPAddress ip(128, 32, 122, 252);
@@ -70,7 +74,7 @@ void loop(){
   float ax, ay, az;
   float gx, gy, gz;
   float mx, my, mz;
-  float roll, pitch, heading;
+  float roll, pitch, yaw, heading;
 
   if (imu.available()) {
     // Read the motion sensors
@@ -82,24 +86,24 @@ void loop(){
     // print the heading, pitch and roll
     roll = filter.getRoll();
     pitch = filter.getPitch();
+    yaw = filter.getYaw();
     heading = filter.getYaw();
-    Serial.print("Orientation: ");
-    Serial.print(heading);
-    Serial.print(" ");
-    Serial.print(pitch);
-    Serial.print(" ");
-    Serial.println(roll);
+//    Serial.print("Orientation: ");
+//    Serial.print(heading);
+//    Serial.print(" ");
+//    Serial.print(pitch);
+//    Serial.print(" ");
+//    Serial.println(roll);
     //the message wants an OSC address as first argument
-    OSCMessage msg("/pitch");
-    msg.add((int32_t)pitch);
+    OSCMessage msg("/motion");
+    msg.add(pitch);
+    msg.add(yaw);
+    msg.add(roll);
     Udp.beginPacket(outIp, outPort);
     msg.send(Udp); // send the bytes to the SLIP stream
     Udp.endPacket(); // mark the end of the OSC Packet
     msg.empty(); // free space occupied by message
   }
-
-
-  delay(20);
 }
 
 void printWiFiStatus() {
