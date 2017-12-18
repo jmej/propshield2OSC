@@ -1,5 +1,3 @@
-#include <OSCMessage.h>
-
 /*
     connects to a wifi network
     reads pitch, yaw and roll from the teensy prop shield
@@ -23,12 +21,12 @@ NXPSensorFusion filter;
 
 int status = WL_IDLE_STATUS;
 char ssid[] = "IMAGA"; //  your network SSID (name)
-char pass[] = "*****";    // your network password (use for WPA, or use as key for WEP)
+char pass[] = "windsor1";    // your network password (use for WPA, or use as key for WEP)
 
 //the Arduino's IP
 IPAddress ip(128, 32, 122, 252);
 //destination IP
-IPAddress outIp(10, 0, 1, 3);
+IPAddress outIp(10, 0, 1, 137);
 const unsigned int outPort = 9999;
 
 WiFiUDP Udp;
@@ -36,20 +34,23 @@ WiFiUDP Udp;
 void setup() {
   //Initialize serial and wait for port to open:
   Serial.begin(9600);
+  delay(5000);
   imu.begin();
   filter.begin(100);
   WiFi.setPins(10,6,5); // CS, irq, rst
-  while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
-  }
+//  while (!Serial) {
+//   Serial.println("waiting for serial..."); // wait for serial port to connect. Needed for native USB port only
+//  }
 
+  Serial.println("Serial port connected");
   // check for the presence of the shield:
+  Serial.println(WiFi.status());
   if (WiFi.status() == WL_NO_SHIELD) {
     Serial.println("WiFi shield not present");
     // don't continue:
-    while (true);
+//    while (true);
   }
-
+  Serial.println(WiFi.status());
   // attempt to connect to WiFi network:
   while ( status != WL_CONNECTED) {
     Serial.print("Attempting to connect to SSID: ");
