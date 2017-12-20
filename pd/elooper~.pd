@@ -1,4 +1,4 @@
-#N canvas 630 41 709 844 10;
+#N canvas 630 50 709 844 10;
 #X obj 53 558 outlet~;
 #X text 39 8 enveloping looper;
 #X obj 56 99 inlet;
@@ -36,8 +36,8 @@
 #X obj 97 81 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 146 14 inlet;
-#X floatatom 217 125 5 0 0 0 - - -;
-#X floatatom 80 124 5 0 0 0 - - -;
+#X floatatom 217 125 5 0 0 0 - - -, f 5;
+#X floatatom 80 124 5 0 0 0 - - -, f 5;
 #X obj 58 104 f;
 #X obj 190 102 f;
 #X connect 0 0 9 0;
@@ -75,7 +75,7 @@
 #X obj 54 209 r \$0_play;
 #X obj 28 159 r \$0_stop;
 #X msg 27 182 stop;
-#X floatatom 72 381 5 0 0 0 - - -;
+#X floatatom 72 381 5 0 0 0 - - -, f 5;
 #X obj 26 284 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 55 356 f;
@@ -99,7 +99,7 @@
 #X obj 201 224 t b f;
 #X obj 152 199 f;
 #X obj 120 165 t b f;
-#X floatatom 170 274 15 0 0 0 - - -;
+#X floatatom 170 274 15 0 0 0 - - -, f 15;
 #X obj 152 230 - 0;
 #X obj 54 262 metro 1000;
 #X obj 277 170 s \$0_tsize;
@@ -148,8 +148,8 @@
 #X obj 210 176 s \$0_play;
 #X obj 275 176 s \$0_stop;
 #X obj 224 146 t b b;
-#X symbolatom 169 571 25 0 0 0 - - -;
-#X symbolatom 168 552 25 0 0 0 - - -;
+#X symbolatom 169 571 25 0 0 0 - - -, f 25;
+#X symbolatom 168 552 25 0 0 0 - - -, f 25;
 #X obj 53 305 spigot;
 #X obj 107 305 r \$0_enabler;
 #X obj 474 130 loadbang;
@@ -204,7 +204,7 @@
 #X obj 378 335 r \$0_tlen;
 #X obj 384 362 r \$0-speed;
 #X obj 369 389 * 1;
-#X msg 296 55 500;
+#X msg 296 55 0;
 #X connect 2 0 61 0;
 #X connect 3 0 0 0;
 #X connect 5 0 0 0;
