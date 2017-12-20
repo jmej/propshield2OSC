@@ -20,13 +20,13 @@ NXPMotionSense imu;
 NXPSensorFusion filter;
 
 int status = WL_IDLE_STATUS;
-char ssid[] = "IMAGA"; //  your network SSID (name)
-char pass[] = "windsor1";    // your network password (use for WPA, or use as key for WEP)
+char ssid[] = "****"; //  your network SSID (name)
+char pass[] = "****";    // your network password (use for WPA, or use as key for WEP)
 
 //the Arduino's IP
 IPAddress ip(128, 32, 122, 252);
 //destination IP
-IPAddress outIp(10, 0, 1, 137);
+IPAddress outIp(192, 168, 1, 50);
 const unsigned int outPort = 9999;
 
 WiFiUDP Udp;
