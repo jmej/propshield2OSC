@@ -1,0 +1,36 @@
+#N canvas 51 52 879 546 10;
+#X obj 279 20 inlet;
+#X obj 279 192 outlet;
+#X obj 25 23 table playlist01;
+#X obj 26 48 table playlist02;
+#X obj 25 73 table playlist03;
+#X obj 25 98 table playlist04;
+#X obj 19 146 table playtrans01;
+#X obj 19 176 table playtrans02;
+#X obj 18 204 table playtrans03;
+#X obj 19 231 table playtrans04;
+#X msg 279 87 list playlist01 playlist02 playlist03 playlist04 playtrans01
+playtrans02 playtrans03 playtrans04 playtrans01 playtrans02 playtrans03
+playtrans04 kobe01 kobe02 kobe03 kobe04 game01 game02 run01 run02 run03
+pedestal01 pedestal02 pedestal03 dribblepan unmatched1 unmatched2 unmatched3
+unmatched4 afterparty;
+#X obj 24 286 table kobe01;
+#X obj 24 316 table kobe02;
+#X obj 24 345 table kobe03;
+#X obj 24 371 table kobe04;
+#X obj 27 424 table game01;
+#X obj 27 450 table game02;
+#X obj 121 288 table run01;
+#X obj 121 317 table run02;
+#X obj 121 343 table run03;
+#X obj 214 286 table dribblepan;
+#X obj 335 289 table unmatched1;
+#X obj 335 319 table unmatched2;
+#X obj 335 348 table unmatched3;
+#X obj 335 374 table unmatched4;
+#X obj 215 347 table pedestal01;
+#X obj 215 402 table pedestal03;
+#X obj 215 376 table pedestal02;
+#X obj 453 288 table afterparty;
+#X connect 0 0 10 0;
+#X connect 10 0 1 0;
